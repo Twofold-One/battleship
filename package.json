@@ -4,8 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "webpack --watch",
+    "test": "jest",
+    "watch": "concurrently \"jest --watch\" \" webpack --watch\"",
     "build": "webpack"
   },
   "repository": {
@@ -19,11 +19,18 @@
   },
   "homepage": "https://github.com/Twofold-One/battleship#readme",
   "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "babel-jest": "^27.3.1",
+    "babel-loader": "^8.2.3",
+    "concurrently": "^6.3.0",
     "css-loader": "^6.5.1",
     "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest": "^25.2.4",
+    "jest": "^27.3.1",
     "prettier": "2.4.1",
     "style-loader": "^3.3.1",
     "webpack": "^5.63.0",

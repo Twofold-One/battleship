@@ -1,4 +1,4 @@
 import './style.css';
+import Ship from './ship_factory';
 
-console.log('hello world!');
 console.log('check');

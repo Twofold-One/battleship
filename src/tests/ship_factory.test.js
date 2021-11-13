@@ -1,4 +1,4 @@
-import Ship from './src/ship_factory';
+import Ship from '../factories/ship_factory';
 
 describe('Ship factory --> properties', () => {
     const carrier = Ship('carrier');

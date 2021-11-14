@@ -22,9 +22,6 @@ const Ship = (name) => {
             break;
     }
 
-    // const getName = () => name;
-    // const getLength = () => size;
-
     const hits = Array(size).fill(null);
     const hit = (i) => {
         hits[i] = 'hit';

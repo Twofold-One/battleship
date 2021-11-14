@@ -1,24 +1,44 @@
-const Gameboard = (name) => {
-    // first index is row, second is column
+// import Ship from './ship_factory';
+
+const Gameboard = () => {
+    // first index is row (y), second is column (x)
     const gameboard = Array(10)
         .fill(null)
         .map(() => Array(10).fill(null));
     const getGameboard = () => gameboard;
-    // function which calls ship factory function
-    const placeShips = () => {};
-    // function takes pair of coordinates,
-    // determines whether or not the attack hit a ship
-    // and then sends the ‘hit’ function to the correct ship,
-    // or records the coordinates of the missed shot.
-    const recieveAttack = (coordinates) => {};
-    // Gameboards should keep track of missed attacks so they can display them properly.
-    const trackAttak = () => {};
-    // Gameboards should be able to report whether or not all of their ships have been sunk
-    const allShipsAreSunk = () => {};
+    const placedShips = [];
 
-    return { getGameboard };
+    const placeShip = (ship, y, x, orientation) => {
+        if (orientation === 'horizontal') {
+            for (let i = 0; i < ship.size; i += 1) {
+                gameboard[y][x + i] = {
+                    ship,
+                    index: i,
+                };
+            }
+        } else {
+            for (let i = 0; i < ship.size; i += 1) {
+                gameboard[y + i][x] = {
+                    ship,
+                    index: i,
+                };
+            }
+        }
+        placedShips.push(ship);
+    };
+
+    const recieveAttack = (y, x) => {
+        if (gameboard[y][x] === null) {
+            gameboard[y][x] = 'miss';
+        } else if (gameboard[y][x].ship) {
+            gameboard[y][x].ship.hit(gameboard[y][x].index);
+            gameboard[y][x] = 'hit';
+        }
+    };
+
+    const allShipsAreSunk = () => placedShips.every((ship) => ship.isSunk());
+
+    return { getGameboard, placeShip, recieveAttack, allShipsAreSunk };
 };
-
-console.table(Gameboard('player').getGameboard());
 
 export default Gameboard;

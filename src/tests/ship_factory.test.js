@@ -55,7 +55,3 @@ describe('Ship factory --> isSunk method', () => {
         expect(carrier.isSunk()).toBe(true);
     });
 });
-
-// test('sum func actually works', () => {
-//     expect(sum(1, 2)).toBe(3);
-// });

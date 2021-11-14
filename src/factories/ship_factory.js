@@ -32,19 +32,11 @@ const Ship = (name) => {
     const getHits = () => hits;
 
     const isSunk = () => {
-        const isHit = (position) => position === 'hit';
+        const isHit = (status) => status === 'hit';
         return getHits().every(isHit);
     };
 
     return { name, size, hit, getHits, isSunk };
 };
 
-const carrier = Ship('carrier', 5);
-
 export default Ship;
-
-// function sum(a, b) {
-//     return a + b;
-// }
-
-// export default sum;
